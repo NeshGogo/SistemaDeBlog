@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SistemaDeBlog.Models.Publicacion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center display-4">Muro de Publicaciones.</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Añadir Nueva</a>
+</p>
+
+<div class="text-center">
+    @foreach (var item in Model)
+    {
+        <div class="mt-5">
+            <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+            <h6>Fecha: <span class="small text-black-50"> @Html.DisplayFor(modelItem => item.RegisterDate.Date)</span></h6>
+            <p class="text-body">
+                @Html.DisplayFor(modelItem => item.Content)
+            </p>
+            <div class="form-group small">
+                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.PublicacionId">Editar</a> |
+                <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.PublicacionId">Detalle</a> |
+                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.PublicacionId">Eliminar</a>
+            </div>
+        </div>
+
+    }
+</div>
+
+    
